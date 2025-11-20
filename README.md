@@ -1,130 +1,171 @@
+# Oscar Leading Actress API
 
-# Executive Summary
+A simple web app that tells you which actress won the Oscar for Best Leading Actress in any year from 2010 to 2025.
 
-**Problem:** People often want a quick way to check Oscar winners for Best Leading Actress without digging through long lists or websites.
+## What Does This Do?
 
-**Solution:** This project is a simple FastAPI app that lets you type in an actress’s name (2010–2025) and instantly see the movie and year she won. It also has a health check endpoint to confirm the app is running.
+**The Problem:** You want to quickly find out who won the Best Actress Oscar in a specific year without searching through long lists online.
 
-# System Overview
+**The Solution:** This app lets you type in an actress's name and instantly get back which movie she won for and what year. It's fast and easy to use!
 
-**Course Concept(s):** This project uses FastAPI, a Python web framework, to build a simple API. FastAPI is a concept from the course module on APIs and data pipelines.
+## How It Works
 
-**Architecture Diagram:**  
-The system is very simple:
-- User sends a request (like asking for an actress name).
-- FastAPI receives the request in `app.py`.
-- The app looks up data from `data.py`.
-- The app sends back a JSON response.
+The app is built with **FastAPI**, which is a tool that helps create simple web services in Python. Here's what happens:
 
-(See diagram in /assets once added.)
+1. You ask for an actress's name (like "Emma Stone")
+2. The app looks it up in a list
+3. The app sends you back the movie title and year
+4. Done!
 
-**Data/Models/Services:**  
-- Data source: `data.py` file with Oscar winners (2010–2025).  
-- Format: Python dictionary.  
-- License: Public information, no restrictions.
+**What I Used:**
+- **FastAPI** - A Python tool for building web services (this is the course concept I'm using)
+- **Python dictionary** - A simple list that stores all the Oscar winner information
+- **Docker** - A way to package the app so it runs the same way on any computer
 
-# How to Run (Local)
+## What Data Does It Have?
 
-This app is designed to run inside a container (Docker), but here are the basic steps to run it locally:
+The app knows about Oscar winners from 2010 to 2025. The information comes from public Oscar records and is stored in a simple Python file called `data.py`.
 
-1. Make sure you have Python installed.
-2. Create and activate a virtual environment:
+## How to Run This App
 
-python -m venv venv 
+### Option 1: Run with Docker (Recommended - Works on any computer)
 
-venv\Scripts\activate
+**Step 1: Build the app**
+```bash
+docker build -t oscar-actress-api:latest .
+```
 
-3. Install dependencies:
+**Step 2: Run the app**
+```bash
+docker run --rm -p 8080:8080 oscar-actress-api:latest
+```
 
-pip install -r requirements.txt
+**Step 3: Test it!**
 
-4. Run the app with Uvicorn:
+Open your web browser and try these links:
+- Health check: http://localhost:8080/health
+- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone
+- Interactive docs: http://localhost:8080/docs
 
-uvicorn src.app:api --reload --host 0.0.0.0 --port 8080
+Or use this command in a terminal:
+```bash
+curl http://localhost:8080/health
+```
 
-5. Test the health endpoint:
-curl.exe http://localhost:8080/health
+You should see: `{"status":"ok"}`
 
-Expected output:
+**To stop the app:** Press `Ctrl+C` in the terminal where it's running.
 
-{"status":"ok"}
+---
 
-# Design Decisions
+### Option 2: Run with the run.sh script (Mac/Linux/Git Bash only)
 
-**Why FastAPI?**  
-FastAPI was chosen because it is simple to use, fast, and makes building APIs easy for beginners.
+```bash
+bash run.sh
+```
 
-**Alternatives Considered:**  
-Flask was another option, but FastAPI has built-in support for automatic documentation and type checking, which made it easier.
+**Note:** If you're using Windows PowerShell, use Option 1 instead.
 
-**Tradeoffs:**  
-- FastAPI is great for small projects, but for very large systems you might need more setup.  
-- Keeping the data in a Python file (`data.py`) is simple, but not scalable compared to a database.
+---
 
-**Security/Privacy:**  
-- No secrets are stored in the code.  
-- Example environment variables are in `.env.example`.  
-- Input is stripped to avoid errors with extra spaces.
+### Option 3: Run without Docker (if you want to test locally)
 
-**Ops (Operations):**  
-- Health check endpoint (`/health`) confirms the app is running.  
-- Known limitation: only covers Oscar winners from 2010–2025.
+1. Install Python
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+3. Install what the app needs:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the app:
+   ```bash
+   uvicorn src.app:api --reload --host 0.0.0.0 --port 8080
+   ```
 
-# Results & Evaluation
+## Example Outputs
 
-**Sample Outputs:**
-- Health check:
-{"status":"ok"}
+**When you check if the app is running:**
+```
+GET http://localhost:8080/health
+Response: {"status":"ok"}
+```
 
-- Example winner lookup:
-GET /winner/Natalie Portman 
-Response: {"actress":"Natalie Portman","movie":"Black Swan","year":2010}
+**When you look up an actress:**
+```
+GET http://localhost:8080/winner/Natalie%20Portman
+Response: {"actress":"Natalie Portman","movie":"Black Swan","year":2011}
+```
 
-**Screenshots:**  
-Screenshots of these outputs can be placed in the `/assets` folder and linked here.
+**When you look up someone who didn't win:**
+```
+GET http://localhost:8080/winner/Random%20Person
+Response: 404 Error - "Actress not found (2010–2025)"
+```
 
-**Performance Notes:**  
-- The app responds instantly for small data lookups.  
-- Resource usage is minimal since the dataset is small.
+## Why I Made These Choices
 
-**Validation/Tests:**  
-- A simple test confirms `/health` returns status 200 and `{"status":"ok"}`.  
-- Data lookup works for valid names and returns 404 for names not in the dataset.
+**Why FastAPI instead of other tools?**
+- It's simple to learn and use
+- It automatically creates documentation for your app (go to `/docs` to see it!)
+- It's fast and modern
 
-## Ethics, Security, and Operations
+**Why not use a real database?**
+- For this small project, a simple Python dictionary works fine
+- If I had thousands of records, I'd use a database like MongoDB or PostgreSQL
 
-- **Privacy:**  
-  This app only shows public Oscar winner data. It does not collect or store any personal information about users.
+**What about bigger projects?**
+- This setup works great for small apps
+- For bigger apps with lots of users, I'd need to add more features like caching and load balancing
 
-- **Safe Inputs:**  
-  If you type in an actress name that isn’t in the list, the app gives a clear “Not Found” message instead of breaking.
+## Safety & Privacy
 
-- **Environment Settings:**  
-  Any settings (like port numbers or future secrets) are kept in a `.env` file. Nothing private is written directly into the code.
+**Is this safe to use?**
+- Yes! The app only shows public Oscar winner information
+- It doesn't collect any personal data from users
+- If you type a name that's not in the list, it just says "not found" - it doesn't break
 
-- **Lightweight App:**  
-  The app is small and fast. It doesn’t use much memory or CPU, so it can run easily on most computers or cloud services.
+**Security features:**
+- No passwords or secrets are saved in the code
+- Settings are kept in a `.env` file (there's an example file called `.env.example`)
+- User input is cleaned up to avoid errors
 
-- **Health Check:**  
-  There is a `/health` endpoint that lets you quickly check if the app is running.
+**Resource usage:**
+- This app is very lightweight - it doesn't use much memory or CPU
+- It can run easily on most computers or cloud servers
 
-- **Ethical Use:**  
-  The data comes from public Oscar records. It’s used here only for learning and demo purposes, not for profit.
+**How to check if it's working:**
+- There's a special `/health` endpoint you can check anytime
 
+## Tests
 
+I created some basic tests to make sure everything works:
+- Test that the health check returns "ok"
+- Test that looking up a real actress works
+- Test that looking up a fake name returns an error
 
-# What’s Next
+To run the tests:
+```bash
+pytest tests/
+```
 
-- Add more Oscar categories (Best Actor, Best Director, etc.).
-- Connect to a real database instead of a Python dictionary.
-- Improve error messages and input handling.
-- Add more unit tests in the `tests/` folder.
-- Deploy the app to the cloud for extra credit.
+## What I'd Add Next
 
-# Links
+If I had more time, here's what I'd improve:
+- Add more Oscar categories (Best Actor, Best Director, Best Picture)
+- Use a real database instead of a Python file
+- Make better error messages
+- Add more tests
+- Deploy it to the cloud so anyone can use it online
 
-**GitHub Repo:** <INSERT-YOUR-REPO-URL-HERE>
+## Links
 
-**Public Cloud App (optional):** Not deployed yet.
+**GitHub Repository:** https://github.com/ronnyhota/Oscar-Leading-Actress-API
 
+**Live Demo:** Not deployed yet (maybe for extra credit!)
 
+## License
+
+This project is open source - see the LICENSE.txt file for details.
