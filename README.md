@@ -29,19 +29,24 @@ This app is designed to run inside a container (Docker), but here are the basic 
 
 1. Make sure you have Python installed.
 2. Create and activate a virtual environment:
+
 python -m venv venv 
+
 venv\Scripts\activate
 
 3. Install dependencies:
+
 pip install -r requirements.txt
 
 4. Run the app with Uvicorn:
+
 uvicorn src.app:api --reload --host 0.0.0.0 --port 8080
 
 5. Test the health endpoint:
 curl.exe http://localhost:8080/health
 
 Expected output:
+
 {"status":"ok"}
 
 # Design Decisions
@@ -85,6 +90,28 @@ Screenshots of these outputs can be placed in the `/assets` folder and linked he
 **Validation/Tests:**  
 - A simple test confirms `/health` returns status 200 and `{"status":"ok"}`.  
 - Data lookup works for valid names and returns 404 for names not in the dataset.
+
+## Ethics, Security, and Operations
+
+- **Privacy:**  
+  This app only shows public Oscar winner data. It does not collect or store any personal information about users.
+
+- **Safe Inputs:**  
+  If you type in an actress name that isn’t in the list, the app gives a clear “Not Found” message instead of breaking.
+
+- **Environment Settings:**  
+  Any settings (like port numbers or future secrets) are kept in a `.env` file. Nothing private is written directly into the code.
+
+- **Lightweight App:**  
+  The app is small and fast. It doesn’t use much memory or CPU, so it can run easily on most computers or cloud services.
+
+- **Health Check:**  
+  There is a `/health` endpoint that lets you quickly check if the app is running.
+
+- **Ethical Use:**  
+  The data comes from public Oscar records. It’s used here only for learning and demo purposes, not for profit.
+
+
 
 # What’s Next
 
