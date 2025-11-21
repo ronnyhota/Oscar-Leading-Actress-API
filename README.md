@@ -1,12 +1,12 @@
 # Oscar Leading Actress API
 
-A simple web app that tells you which actress won the Oscar for Best Leading Actress in any year from 2010 to 2025.
+A simple web app that tells you which actress won the Oscar for Best Leading Actress in any year from 2010 to 2025, and contains photos of the actresses!
 
 ## What Does This Do?
 
 **The Problem:** You want to quickly find out who won the Best Actress Oscar in a specific year (between 2010 and 2025) without searching through long lists online.
 
-**The Solution:** This app lets you type in an actress's name and instantly get back which movie she won for and what year. It's fast and easy to use!
+**The Solution:** This app lets you type in an actress's name and instantly get back which movie she won for and what year (along with a photo of her). It's fast and easy to use!
 
 ## How It Works
 
@@ -14,7 +14,7 @@ The app is built with **FastAPI**, which is a tool that helps create simple web 
 
 1. You ask for an actress's name that you think may have won the Academy Award for Best Actress between the years 2010-2025 (like "Emma Stone").
 2. The app looks it up in a list
-3. The app sends you back the movie title and year
+3. The app sends you back the movie title, year, and a photo of her!
 4. Done!
 
 Here's a visual diagram of how the system works:
@@ -25,10 +25,13 @@ Here's a visual diagram of how the system works:
 - **FastAPI** - A Python tool for building web services (this is the course concept I'm using)
 - **Python dictionary** - A simple list that stores all the Oscar winner information
 - **Docker** - A way to package the app so it runs the same way on any computer
+- **HTML/CSS** - To display the results in a nice looking webpage with photos
 
 ## What Data Does It Have?
 
-The app knows about Oscar winners from 2010 to 2025. The information comes from public Oscar records and is stored in a simple Python file called `data.py`.
+The app knows about Oscar winners from 2010 to 2025. The information comes from public Oscar records and is stored in a simple Python file called `data.py`. The app also includes photos of each actress holding their Oscar.
+
+Special feature: Some actresses won multiple times (like Emma Stone and Frances McDormand), and the app shows all of their wins!
 
 ## How to Run This App
 
@@ -48,7 +51,7 @@ docker run --rm -p 8080:8080 oscar-actress-api:latest
 
 Open your web browser and try these links:
 - Health check: http://localhost:8080/health
-- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone
+- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone  -->  Important Note: you do not have to be case sensitive. http://localhost:8080/winner/Emma%20Stone & http://localhost:8080/winner/emma%20stone will get u the same result!
 - Interactive docs: http://localhost:8080/docs
 
 Or use this command in a NEW terminal. DO NOT CLOSE out of the old terminal, just open up a new one:
@@ -91,26 +94,6 @@ bash run.sh
 
 ## Example Outputs
 
-**When you check if the app is running:**
-```
-http://localhost:8080/health
-what you should get  -->  Response: {"status":"ok"}
-```
-
-**When you look up an actress:**
-```
-http://localhost:8080/winner/Natalie%20Portman
-what you should get  -->  Response: {"actress":"Natalie Portman","movie":"Black Swan","year":2011}
-```
-
-**When you look up someone who didn't win:**
-```
-http://localhost:8080/winner/Random%20Person
-what you should get  -->  Response: 404 Error - "Actress not found (2010–2025)"
-```
-
-## Example Outputs
-
 Here are screenshots showing the app working:
 
 **Health Check:**
@@ -121,7 +104,7 @@ The health endpoint confirms the app is running properly.
 
 **Looking Up an Actress:**
 
-![Actress Lookup](assets/actress-lookup.png)
+![Actress Lookup](assets/Actress_lookup.png)
 
 When you search for Emma Stone, the app returns her Oscar win information in JSON format.
 
@@ -137,10 +120,15 @@ All tests pass successfully, confirming the app works correctly.
 - It's simple to learn and use
 - It automatically creates documentation for your app (go to `/docs` to see it!)
 - It's fast and modern
+- It can return both JSON data and HTML webpages
 
 **Why not use a real database?**
 - For this small project, a simple Python dictionary works fine
 - If I had thousands of records, I'd use a database like MongoDB or PostgreSQL
+
+**Why store photos locally instead of using external links**
+- There is no worries about external links breaking
+- The app is completely self-contained
 
 **What about bigger projects?**
 - This setup works great for small apps
@@ -157,9 +145,11 @@ All tests pass successfully, confirming the app works correctly.
 - No passwords or secrets are saved in the code
 - Settings are kept in a `.env` file (there's an example file called `.env.example`)
 - User input is cleaned up to avoid errors
+- Input is case-insensitive, so any capitalization works
 
 **Resource usage:**
 - This app is very lightweight - it doesn't use much memory or CPU
+- The photos are optimized PNG files that load quickly
 - It can run easily on most computers or cloud servers
 
 **How to check if it's working:**
@@ -190,8 +180,8 @@ deactivate
 
 If I had more time, here's what I'd improve:
 - Add more Oscar categories (Best Actor, Best Director, Best Picture)
-- Use a real database instead of a Python file
 - Make better error messages
+- Add a search feature where you can search by year or movie title
 - Add more tests to test out accuracy (even though I am very confident)
 
 ## Links
