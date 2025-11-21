@@ -51,7 +51,7 @@ docker run --rm -p 8080:8080 oscar-actress-api:latest
 
 Open your web browser and try these links:
 - Health check: http://localhost:8080/health
-- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone  -->  Important Note: you do not have to be case sensitive. http://localhost:8080/winner/Emma%20Stone & http://localhost:8080/winner/emma%20stone will get u the same result!
+- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone (Important Note: you do not have to care about capitilization - http://localhost:8080/winner/emma%20stone works too!)
 - Interactive docs: http://localhost:8080/docs
 
 Or use this command in a NEW terminal. DO NOT CLOSE out of the old terminal, just open up a new one:
@@ -192,8 +192,7 @@ If I had more time, here's what I'd improve:
 
 **Try it out:**
 - Health check: https://oscar-actress-api-ronny.azurewebsites.net/health
-- Example actress lookup: https://oscar-actress-api-ronny.azurewebsites.net/winner/emma%20stone
-- Example actress lookup (with photos): https://oscar-actress-api-ronny.azurewebsites.net/winner/emma%20stone/html
+- Example actress lookup (with photos): https://oscar-actress-api-ronny.azurewebsites.net/winner/emma%20stone
 
 ## License
 
