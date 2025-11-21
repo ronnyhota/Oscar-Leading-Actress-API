@@ -106,7 +106,7 @@ The health endpoint confirms the app is running properly.
 
 ![Actress Lookup](assets/Actress_lookup.png)
 
-When you search for Emma Stone, the app returns her Oscar win information in JSON format.
+When you search for Mikey Madison (who the Oscar for Best Actress in 2025), the app returns her Oscar win information in JSON format with her photo!
 
 **Tests Passing:**
 
