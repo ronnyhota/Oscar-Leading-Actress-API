@@ -109,6 +109,28 @@ http://localhost:8080/winner/Random%20Person
 what you should get  -->  Response: 404 Error - "Actress not found (2010–2025)"
 ```
 
+## Example Outputs
+
+Here are screenshots showing the app working:
+
+**Health Check:**
+
+![Health Check](assets/health-check.png)
+
+The health endpoint confirms the app is running properly.
+
+**Looking Up an Actress:**
+
+![Actress Lookup](assets/actress-lookup.png)
+
+When you search for Emma Stone, the app returns her Oscar win information in JSON format.
+
+**Tests Passing:**
+
+![Tests Passing](assets/tests-passing.png)
+
+All tests pass successfully, confirming the app works correctly.
+
 ## Why I Made These Choices
 
 **Why FastAPI instead of other tools?**
