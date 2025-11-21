@@ -89,20 +89,20 @@ bash run.sh
 
 **When you check if the app is running:**
 ```
-GET http://localhost:8080/health
-Response: {"status":"ok"}
+http://localhost:8080/health
+what you should get  -->  Response: {"status":"ok"}
 ```
 
 **When you look up an actress:**
 ```
-GET http://localhost:8080/winner/Natalie%20Portman
-Response: {"actress":"Natalie Portman","movie":"Black Swan","year":2011}
+http://localhost:8080/winner/Natalie%20Portman
+what you should get  -->  Response: {"actress":"Natalie Portman","movie":"Black Swan","year":2011}
 ```
 
 **When you look up someone who didn't win:**
 ```
-GET http://localhost:8080/winner/Random%20Person
-Response: 404 Error - "Actress not found (2010–2025)"
+http://localhost:8080/winner/Random%20Person
+what you should get  -->  Response: 404 Error - "Actress not found (2010–2025)"
 ```
 
 ## Why I Made These Choices
