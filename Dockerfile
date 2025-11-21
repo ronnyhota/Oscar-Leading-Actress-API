@@ -4,6 +4,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY src/ ./src/
-COPY best\ actress\ pictures/ ./best\ actress\ pictures/
+COPY actress_pictures/ ./actress_pictures/
 EXPOSE 8080
 CMD ["uvicorn", "src.app:api", "--host", "0.0.0.0", "--port", "8080"]
