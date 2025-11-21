@@ -33,6 +33,12 @@ The app knows about Oscar winners from 2010 to 2025. The information comes from 
 
 Special feature: Some actresses won multiple times (like Emma Stone and Frances McDormand), and the app shows all of their wins!
 
+**Data Details:**
+- Source: Wikipedia Academy Award for Best Actress page (Creative Commons License)
+- Format: Python dictionary stored in data.py
+- Size: 16 actress records (2010-2025)
+- Photos: 16 PNG images in actress_pictures folder
+
 ## How to Run This App
 
 ### Option 1: Run with Docker (Recommended - Works on any computer)
@@ -51,7 +57,7 @@ docker run --rm -p 8080:8080 oscar-actress-api:latest
 
 Open your web browser and try these links:
 - Health check: http://localhost:8080/health
-- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone (Important Note: you do not have to care about capitilization - http://localhost:8080/winner/emma%20stone works too!)
+- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone (Important Note: you do not have to care about capitalization - http://localhost:8080/winner/emma%20stone works too!)
 - Interactive docs: http://localhost:8080/docs
 
 Or use this command in a NEW terminal. DO NOT CLOSE out of the old terminal, just open up a new one:
@@ -106,7 +112,7 @@ The health endpoint confirms the app is running properly.
 
 ![Actress Lookup](assets/Actress_lookup.png)
 
-When you search for Mikey Madison (who the Oscar for Best Actress in 2025), the app returns her Oscar win information in JSON format with her photo!
+When you search for Mikey Madison (who won the Oscar for Best Actress in 2025), the app returns her Oscar win information in JSON format with her photo!
 
 **Tests Passing:**
 
@@ -193,6 +199,14 @@ If I had more time, here's what I'd improve:
 **Try it out:**
 - Health check: https://oscar-actress-api-ronny.azurewebsites.net/health
 - Example actress lookup (with photos): https://oscar-actress-api-ronny.azurewebsites.net/winner/emma%20stone
+
+**Azure Deployment Working: (it's just my proof that the above two links work!)**
+
+![Azure Health Check](assets/azure_health_check.png)
+
+![Azure Actress Lookup](assets/azure_actress_check.png)
+
+These screenshots confirm that the app is successfully deployed and running on Azure, with both the health check endpoint and actress lookup working perfectly on the live cloud deployment.
 
 ## License
 
