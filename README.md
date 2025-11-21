@@ -149,7 +149,8 @@ I created some basic tests to make sure everything works:
 The tests are located in the `tests/` folder. Since the Docker container runs successfully and the API works as shown above, the core functionality is validated.
 
 To run the tests (its important to use a virtual environment):
-```venv\Scripts\activate
+```
+venv\Scripts\activate
 pytest tests/
 ```
 
