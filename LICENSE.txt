@@ -1,6 +1,6 @@
 License
 
-I used the Academy Award for Best Actress wikipedia page for some of my data. Wikipedia is under the Creative Commons License and I have linked its licesne below. This is entire file was created with the help of my professor!
+I used the Academy Award for Best Actress wikipedia page for some of my data. Wikipedia is under the Creative Commons License and I have linked its license below. This is entire file was created with the help of my professor!
 
 Wikipedia Licensse Link -->  https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License
 
