@@ -17,6 +17,10 @@ The app is built with **FastAPI**, which is a tool that helps create simple web 
 3. The app sends you back the movie title and year
 4. Done!
 
+Here's a visual diagram of how the system works:
+
+![Architecture Diagram](assets/architecture.png)
+
 **What I Used:**
 - **FastAPI** - A Python tool for building web services (this is the course concept I'm using)
 - **Python dictionary** - A simple list that stores all the Oscar winner information
