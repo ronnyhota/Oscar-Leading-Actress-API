@@ -188,7 +188,7 @@ If I had more time, here's what I'd improve:
 
 **GitHub Repository:** https://github.com/ronnyhota/Oscar-Leading-Actress-API
 
-**Live Demo:** https://oscar-actress-api-ronny.azurewebsites.net (but we can't use this exact link we have add in the necessary information to test out for example a 'health check' or to test out when we are looking up an actress! Try the links below!
+**Live Demo:** 'oscar-actress-api-ronny.azurewebsites.net' (but we can't use this exact link we have add in the necessary information to test out for example a 'health check' or to test out when we are looking up an actress! Try the links below!
 
 **Try it out:**
 - Health check: https://oscar-actress-api-ronny.azurewebsites.net/health
