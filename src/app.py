@@ -4,7 +4,7 @@ from src.data import winners
 
 api = FastAPI(title="Oscar Leading Actress API", version="1.0.0")
 
-api.mount("/images", StaticFiles(directory="best actress pictures"), name="images")
+api.mount("/images", StaticFiles(directory="actress_pictures"), name="images")
 
 @api.get("/winner/{actress}")
 def get_winner(actress: str):
