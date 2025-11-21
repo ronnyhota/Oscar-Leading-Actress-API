@@ -51,7 +51,7 @@ docker run --rm -p 8080:8080 oscar-actress-api:latest
 
 Open your web browser and try these links:
 - Health check: http://localhost:8080/health
-- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone  -->  Important Note: you do not have to be case sensitive. http://localhost:8080/winner/Emma%20Stone & http://localhost:8080/winner/emma%20stone will get u the same result!
+- Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone/html  -->  Important Note: you do not have to be case sensitive. http://localhost:8080/winner/Emma%20Stone/html & http://localhost:8080/winner/emma%20stone/html will get u the same result!
 - Interactive docs: http://localhost:8080/docs
 
 Or use this command in a NEW terminal. DO NOT CLOSE out of the old terminal, just open up a new one:
