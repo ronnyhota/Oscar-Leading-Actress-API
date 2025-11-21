@@ -47,9 +47,9 @@ Open your web browser and try these links:
 - Look up Emma Stone: http://localhost:8080/winner/Emma%20Stone
 - Interactive docs: http://localhost:8080/docs
 
-Or use this command in a terminal:
+Or use this command in a NEW terminal. DO NOT CLOSE out of the old terminal, just open up a new one:
 ```bash
-curl http://localhost:8080/health
+curl.exe http://localhost:8080/health
 ```
 
 You should see: `{"status":"ok"}`
