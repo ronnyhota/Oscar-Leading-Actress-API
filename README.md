@@ -4,7 +4,7 @@ A simple web app that tells you which actress won the Oscar for Best Leading Act
 
 ## What Does This Do?
 
-**The Problem:** You want to quickly find out who won the Best Actress Oscar in a specific year without searching through long lists online.
+**The Problem:** You want to quickly find out who won the Best Actress Oscar in a specific year (between 2010 and 2025) without searching through long lists online.
 
 **The Solution:** This app lets you type in an actress's name and instantly get back which movie she won for and what year. It's fast and easy to use!
 
@@ -12,7 +12,7 @@ A simple web app that tells you which actress won the Oscar for Best Leading Act
 
 The app is built with **FastAPI**, which is a tool that helps create simple web services in Python. Here's what happens:
 
-1. You ask for an actress's name (like "Emma Stone")
+1. You ask for an actress's name that you think may have won the Academy Award for Best Actress between the years 2010-2025 (like "Emma Stone").
 2. The app looks it up in a list
 3. The app sends you back the movie title and year
 4. Done!
