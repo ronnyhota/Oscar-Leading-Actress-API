@@ -6,9 +6,12 @@ api = FastAPI(title="Oscar Leading Actress API", version="1.0.0")
 @api.get("/winner/{actress}")
 def get_winner(actress: str):
     name = actress.strip()
-    if name in winners:
-        wins = winners[name]
-        return {"actress": name, "wins": wins}
+    
+    for key in winners.keys():
+        if key.lower() == name.lower():
+            wins = winners[key]
+            return {"actress": key, "wins": wins}
+    
     raise HTTPException(status_code=404, detail="Actress not found (2010–2025)")
 
 @api.get("/health")
