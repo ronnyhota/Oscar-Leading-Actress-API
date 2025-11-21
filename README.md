@@ -154,6 +154,12 @@ venv\Scripts\activate
 python -m pytest tests/
 ```
 
+To get out of the virtual environment you just created, simply type:
+```
+deactivate
+```
+
+
 ## What I'd Add Next
 
 If I had more time, here's what I'd improve:
