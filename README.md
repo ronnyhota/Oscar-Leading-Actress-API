@@ -166,8 +166,7 @@ If I had more time, here's what I'd improve:
 - Add more Oscar categories (Best Actor, Best Director, Best Picture)
 - Use a real database instead of a Python file
 - Make better error messages
-- Add more tests
-- Deploy it to the cloud so anyone can use it online
+- Add more tests to test out accuracy (even though I am very confident)
 
 ## Links
 
