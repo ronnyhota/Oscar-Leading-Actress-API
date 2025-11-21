@@ -188,7 +188,7 @@ If I had more time, here's what I'd improve:
 
 **GitHub Repository:** https://github.com/ronnyhota/Oscar-Leading-Actress-API
 
-**Live Demo:** Not deployed yet (maybe for extra credit!)
+**Live Demo:** https://oscar-actress-api-ronny.azurewebsites.net
 
 ## License
 
