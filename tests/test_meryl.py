@@ -6,8 +6,6 @@ client = TestClient(api)
 def test_meryl_streep():
     response = client.get("/winner/Meryl Streep")
     assert response.status_code == 200
-    assert response.json() == {
-        "actress": "Meryl Streep",
-        "movie": "The Iron Lady",
-        "year": 2012
-    }
+    assert "Meryl Streep" in response.text
+    assert "The Iron Lady" in response.text
+    assert "2012" in response.text

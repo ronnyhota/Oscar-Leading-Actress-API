@@ -8,36 +8,13 @@ api = FastAPI(title="Oscar Leading Actress API", version="1.0.0")
 # Serve actress images
 api.mount("/images", StaticFiles(directory="actress_pictures"), name="images")
 
-# JSON endpoint (used by tests)
-@api.get("/winner/{actress}")
-def get_winner(actress: str):
-    name = actress.strip()
-    for key in winners.keys():
-        if key.lower() == name.lower():
-            wins = winners[key]
-            # If only one win, return flat JSON
-            if len(wins) == 1:
-                win = wins[0]
-                return {
-                    "actress": key,
-                    "movie": win["movie"],
-                    "year": win["year"],
-                }
-            # If multiple wins, return them all
-            return {
-                "actress": key,
-                "wins": wins
-            }
-    raise HTTPException(status_code=404, detail="Actress not found (2010–2025)")
-
-# HTML endpoint (for browser viewing)
-@api.get("/winner/{actress}/html", response_class=HTMLResponse)
+# Default endpoint - returns HTML with photos
+@api.get("/winner/{actress}", response_class=HTMLResponse)
 def get_winner_html(actress: str):
     name = actress.strip()
     for key in winners.keys():
         if key.lower() == name.lower():
             wins = winners[key]
-
             html = f"""
             <html>
                 <head>
@@ -80,16 +57,13 @@ def get_winner_html(actress: str):
                 <body>
                     <h1>{key}</h1>
             """
-
             for win in wins:
                 movie = win["movie"]
                 year = win["year"]
-
                 if len(wins) > 1:
                     image_file = f"{key} {movie}.png"
                 else:
                     image_file = f"{key}.png"
-
                 html += f"""
                     <div class="win">
                         <div class="movie">{movie}</div>
@@ -97,14 +71,11 @@ def get_winner_html(actress: str):
                         <img src="/images/{image_file}" alt="{key} with Oscar for {movie}">
                     </div>
                 """
-
             html += """
                 </body>
             </html>
             """
-
             return html
-
     raise HTTPException(status_code=404, detail="Actress not found (2010–2025)")
 
 # Health check
